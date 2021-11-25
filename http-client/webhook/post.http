@@ -1,0 +1,87 @@
+POST {{host}}/mews/webhook
+Content-Type: application/json
+Authorization: {{bearer}}
+
+{
+  "Action": "IntegrationCreated",
+  "Data": {
+    "Enterprise": {
+      "Id": "c65ea6e9-2340-42f4-9136-ab3a00b6da22",
+      "Name": "Sample Chain Hotel 1"
+    },
+    "Service": {
+      "Id": "9745ce3a-8dbb-4cc0-a550-55f9ff67b242",
+      "Name": "Accommodation"
+    },
+    "Requestor": null,
+    "AccessToken":"7059D2C25BF64EA681ACAB3A00B859CC-D91BFF2B1E3047A3E0DEC1D57BE1382",
+    "CreatedUtc": "2019-12-13T14:42:52Z",
+    "IsEnabled": true,
+    "Integration": {
+      "Id": "a342cc83-cd3a-4805-b450-ad84008b6888",
+      "Name": "WebhookTEST2"
+    }
+  }
+}
+
+###
+POST {{host}}/mews/webhook
+Content-Type: application/json
+Authorization: {{bearer}}
+
+{
+  "EnterpriseId": "c65ea6e9-2340-42f4-9136-ab3a00b6da22",
+  "IntegrationId": "39a5bacf-99d8-4238-9c58-ad9d00265941",
+  "Events": [
+    {
+      "Discriminator": "ServiceOrderUpdated",
+      "Value": {
+        "Id": "1c958ae0-4edd-447b-af35-ad9d01065802"
+      }
+    }
+  ],
+  "Entities": {
+    "ServiceOrders": [
+      {
+        "Id": "1c958ae0-4edd-447b-af35-ad9d01065802",
+        "ServiceId": "764642e9-7ef2-4ccc-8a53-ab3a00b6e42b",
+        "GroupId": "37a749e3-a757-4c94-a4f5-ad9d01065802",
+        "Number": "1609",
+        "ChannelNumber": null,
+        "ChannelManagerNumber": null,
+        "ChannelManagerGroupNumber": null,
+        "ChannelManager": null,
+        "State": "Confirmed",
+        "Origin": "CommanderInPerson",
+        "CreatedUtc": "2021-09-08T15:55:09Z",
+        "UpdatedUtc": "2021-09-08T15:55:10Z",
+        "CancelledUtc": null,
+        "StartUtc": "2021-09-08T19:00:00Z",
+        "EndUtc": "2021-09-10T15:00:00Z",
+        "ReleasedUtc": null,
+        "RequestedCategoryId": "20e533be-5b48-414d-b55e-ab3a00c0d480",
+        "AssignedSpaceId": "ece31479-b356-4578-8b91-ac2300ce4988",
+        "AssignedResourceId": "ece31479-b356-4578-8b91-ac2300ce4988",
+        "AssignedSpaceLocked": false,
+        "AssignedResourceLocked": false,
+        "BusinessSegmentId": "56978b38-dd21-4cdb-b76d-ab3a00c764cc",
+        "CompanyId": null,
+        "TravelAgencyId": null,
+        "AvailabilityBlockId": null,
+        "RateId": "62cbda91-8470-449a-9a84-ac4500ea2b44",
+        "VoucherId": null,
+        "CreditCardId": null,
+        "CancellationReason": null,
+        "AdultCount": 2,
+        "ChildCount": 0,
+        "CustomerId": "805e2fc5-8847-4662-ac24-ac76007edd61",
+        "BookerId": null,
+        "CompanionIds": [
+          "805e2fc5-8847-4662-ac24-ac76007edd61"
+        ],
+        "ChannelManagerId": null
+      }
+    ],
+    "Resources": []
+  }
+}

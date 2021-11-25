@@ -1,0 +1,22 @@
+Result:
+  type: object
+  properties:
+    status:
+      type: string
+      enum:
+        - SUCCESS
+        - ERROR
+    messages:
+      type: array
+      items:
+        type: string
+        example: Request success
+    metadata:
+      type: object
+      default: null
+    data:
+      type: object
+  required:
+    - status
+
+

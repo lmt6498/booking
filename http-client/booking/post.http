@@ -1,0 +1,39 @@
+POST {{host}}/booking
+Content-Type: application/json
+Authorization: {{bearer}}
+
+{
+  "identifier": "Anything",
+  "timezone": "Asia/Manila",
+  "bookedAt": "2021-06-27T02:09:31.980Z",
+  "startTime": "2021-06-27T02:09:31.980Z",
+  "endTime": "2021-06-27T02:09:31.980Z",
+  "type": "ONLINE",
+  "status": "PENDING",
+  "guests": [
+    {
+      "firstName": "Chau",
+      "lastName": "Tran",
+      "email": "chautn89@gmail.com",
+      "mobileNumber": "84936180989",
+      "status": "CHECKED_IN"
+    },
+    {
+      "firstName": "Quy",
+      "lastName": "Vuong",
+      "email": "vuongquy91@gmail.com",
+      "mobileNumber": "84368108303",
+      "status": "CHECKED_IN"
+    }
+  ],
+  "items": [
+    {
+      "name": "Room 2021",
+      "type": "ROOM"
+    },
+    {
+      "name": "Room 2022",
+      "type": "PLACE"
+    }
+  ]
+}

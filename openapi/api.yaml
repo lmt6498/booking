@@ -1,0 +1,51 @@
+openapi: 3.0.0
+servers:
+  - description: localhost
+    url: http://localhost:8080
+  - description: dev
+    url: https://dev.api.connector.pouchnation.com
+
+info:
+  version: "1.0.0"
+  title: Booking API specification
+  description: All booking endpoints would be provided by ms-booking
+
+security:
+  - application:
+      - booking/user
+      - booking/internal
+      - booking/system
+tags:
+  - name: booking
+    description: Booking management
+  - name: booking-guest
+    description: Booking guests management
+  - name: booking-item
+    description: Booking items management
+
+paths:
+  /booking:
+    $ref: './paths/booking/methods.yaml#/paths-booking-endpoints'
+  /booking/{bookingId}:
+    $ref: './paths/booking/booking-id/methods.yaml#/paths-booking-{booking-id}-endpoints'
+  /booking/{bookingId}/guest:
+    $ref: './paths/booking/booking-id/guest/methods.yaml#/paths-booking-{booking-id}-guest-endpoints'
+  /booking/{bookingId}/guest/{bookingGuestId}:
+    $ref: './paths/booking/booking-id/guest/booking-guest-id/methods.yaml#/paths-booking-{booking-id}-guest-{booking-guest-id}-endpoints'
+  /booking/{bookingId}/item:
+    $ref: './paths/booking/booking-id/item/methods.yaml#/paths-booking-{booking-id}-item-endpoints'
+  /booking/{bookingId}/item/{bookingItemId}:
+    $ref: './paths/booking/booking-id/item/booking-item-id/methods.yaml#/paths-booking-{booking-id}-item-{booking-item-id}-endpoints'
+
+components:
+  securitySchemes:
+    application:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://dev-auth-connector-pouchnation-com.auth.ap-southeast-1.amazoncognito.com/oauth2/token
+          scopes:
+            booking/system: All authenticated system users
+            booking/user: All authenticated users
+            booking/internal: All authenticated internal users
+

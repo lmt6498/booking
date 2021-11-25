@@ -1,0 +1,14 @@
+POST {{host}}/booking/1/item
+Content-Type: application/json
+Authorization: {{bearer}}
+
+[
+  {
+    "name": "Coca",
+    "type": "CONSUMED"
+  },
+  {
+    "name": "Ice cream",
+    "type": "CONSUMED"
+  }
+]

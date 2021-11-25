@@ -1,0 +1,15 @@
+POST {{host}}/booking/1/guest
+Content-Type: application/json
+Authorization: {{bearer}}
+
+[
+  {
+    "firstName": "John",
+    "lastName": "Dash",
+    "status": "CHECKED_IN"
+  },
+  {
+    "firstName": "Iron",
+    "lastName": "Man"
+  }
+]

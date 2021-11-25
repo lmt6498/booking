@@ -1,0 +1,10 @@
+POST https://staging-auth-connector-pouchnation-com.auth.ap-southeast-1.amazoncognito.com/oauth2/token
+Content-Type: application/x-www-form-urlencoded
+Authorization: {{basic}}
+
+grant_type=client_credentials&scope=booking%2Fuser%20booking%2Fsystem%20booking%2Finternal
+
+###
+GET https://dev-auth-connector-pouchnation-com.auth.ap-southeast-1.amazoncognito.com/oauth2/userInfo
+Authorization: {{bearer}}
+

@@ -1,0 +1,26 @@
+### root: '../..'
+### schemas: '../../components/schemas'
+### parameters: '../../components/parameters'
+
+IdentifierParam:
+  name: identifier
+  in: query
+  required: false
+  schema:
+    type: string
+
+BookedAtBeforeParam:
+  name: bookedAtBefore
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date-time
+
+BookedAtAfterParam:
+  name: bookedAtAfter
+  in: query
+  required: false
+  schema:
+    type: string
+    format: date-time

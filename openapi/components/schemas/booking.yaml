@@ -1,0 +1,58 @@
+###
+Booking:
+  type: object
+  properties:
+    identifier:
+      type: string
+      example: KDKTWZ
+    timezone:
+      type: string
+      example: Asia/Manila
+      description: reference java.util.TimeZone
+    bookingAt:
+      type: string
+      format: date-time
+    startTime:
+      type: string
+      format: date-time
+    endTime:
+      type: string
+      format: date-time
+    type:
+      type: string
+      example: ONLINE
+    status:
+      type: string
+      example: CLAIMED
+
+###
+BookingItem:
+  type: object
+  properties:
+    name:
+      type: string
+      example: Room 2022
+    type:
+      type: string
+      example: PLACE
+
+###
+BookingGuest:
+  type: object
+  properties:
+    firstName:
+      type: string
+      example: Chau
+    lastName:
+      type: string
+      example: Tran
+    email:
+      type: string
+      format: email
+      example: chautn89@gmail.com
+    mobileNumber:
+      type: string
+      example: 84936180989
+    status:
+      type: string
+      example: CHECKED_IN

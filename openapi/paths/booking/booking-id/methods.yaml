@@ -1,0 +1,54 @@
+paths-booking-{booking-id}-endpoints:
+  ###
+  get:
+    tags:
+      - booking
+    summary: Get a booking details by id
+    description: Return a booking details with id
+    operationId: getBookingById
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        schema:
+          type: integer
+          format: int64
+        style: simple
+        description: Unique id in ms-booking
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '../../../components/schemas/result.yaml#/Result'
+                - type: object
+                  properties:
+                    data:
+                      $ref: '../../../components/schemas/booking.yaml#/Booking'
+  ###
+  put:
+    tags:
+      - booking
+    summary: Update a booking
+    description: Updating a booking by id
+    operationId: updateBooking
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        schema:
+          type: integer
+          format: int64
+        style: simple
+        description: Unique id in ms-booking
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: CLAIMED

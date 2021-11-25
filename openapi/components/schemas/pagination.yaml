@@ -1,0 +1,46 @@
+Pagination:
+  type: object
+  example:
+    page: 0
+    size: 1
+    orders:
+      - createdDate:ASC
+  properties:
+    page:
+      type: integer
+      format: int32
+      minimum: 0
+      default: 0
+    size:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 1000
+      default: 20
+    orders:
+      type: array
+      items:
+        type: string
+
+PaginationResponse:
+  allOf:
+    - $ref: '#/Pagination'
+    - type: object
+      example:
+        pageElements: 1
+        totalPage: 100
+        totalElements: 100
+      properties:
+        pageElements:
+          description: Number of elements of the current page
+          type: integer
+          format: int32
+          minimum: 0
+        totalPages:
+          type: integer
+          format: int32
+          minimum: 0
+        totalElements:
+          type: integer
+          format: int64
+          minimum: 0

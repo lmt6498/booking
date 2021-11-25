@@ -1,0 +1,83 @@
+### root: '../..'
+### schemas: '../../components/schemas'
+### parameters: '../../components/parameters'
+
+paths-booking-endpoints:
+  get:
+    tags:
+      - booking
+    summary: Filtering booking
+    description: Filtering booking data by criteria
+    operationId: filterBooking
+    parameters:
+      - $ref: '../../components/parameters/pagination.yaml#/PageParam'
+      - $ref: '../../components/parameters/pagination.yaml#/SizeParam'
+      - $ref: '../../components/parameters/pagination.yaml#/OrdersParam'
+      - $ref: '../../components/parameters/booking-filter.yaml#/IdentifierParam'
+      - $ref: '../../components/parameters/booking-filter.yaml#/BookedAtBeforeParam'
+      - $ref: '../../components/parameters/booking-filter.yaml#/BookedAtAfterParam'
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '../../components/schemas/result.yaml#/Result'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '../../components/schemas/booking.yaml#/Booking'
+                    metadata:
+                      $ref: '../../components/schemas/pagination.yaml#/PaginationResponse'
+  ###
+  post:
+    tags:
+      - booking
+    summary: Creator of booking
+    description: >-
+      Posting a booking data which should be produced by PouchNation App
+    operationId: createBooking
+    requestBody:
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/schemas/booking.yaml#/Booking'
+              - type: object
+                required:
+                  - identifier
+                  - owner
+                properties:
+                  applicationId:
+                    type: string
+                    example: POUCH_VENUE
+                  guests:
+                    type: array
+                    items:
+                      $ref: '../../components/schemas/booking.yaml#/BookingGuest'
+                  items:
+                    type: array
+                    items:
+                      $ref: '../../components/schemas/booking.yaml#/BookingItem'
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '../../components/schemas/result.yaml#/Result'
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      allOf:
+                        - type: object
+                          properties:
+                            bookingId:
+                              type: number
+                              format: int64
+                              minimum: 1

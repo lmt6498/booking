@@ -1,0 +1,18 @@
+FROM azul/zulu-openjdk:11.0.11
+
+RUN apt-get update
+RUN apt-get install -y ttf-dejavu wget jq
+
+COPY target/ms-booking.jar /usr/app/ms-booking.jar
+
+COPY docker/bootstrap.yml /usr/app/bootstrap.yml
+
+# COPY docker/dd-java-agent-0.61.0.jar /usr/java-agent.jar
+
+HEALTHCHECK CMD wget -q --method=GET localhost:8080/actuator/health
+
+CMD [ "/usr/bin/java", \ 
+  "-jar", \ 
+  "-Dspring.config.location=file:/usr/app/bootstrap.yml", \ 
+  "/usr/app/ms-booking.jar" \ 
+]

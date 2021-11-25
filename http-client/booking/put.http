@@ -1,0 +1,7 @@
+PUT {{host}}/bookings/48
+Content-Type: application/json
+Authorization: {{bearer}}
+
+{
+  "status": "CANCELED"
+}

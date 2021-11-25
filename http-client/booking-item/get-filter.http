@@ -1,0 +1,3 @@
+GET {{host}}/bookings/26/item
+Content-Type: application/json
+Authorization: {{bearer}}

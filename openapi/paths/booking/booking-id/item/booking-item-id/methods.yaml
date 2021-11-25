@@ -1,0 +1,38 @@
+### root: '../../../../..'
+### schemas: '../../../../../components/schemas'
+### parameters: '../../../../../components/parameters'
+
+paths-booking-{booking-id}-item-{booking-item-id}-endpoints:
+  delete:
+    tags:
+      - booking-item
+    summary: Delete a item from an existing booking
+    description: Delete a item from an existing booking
+    operationId: deleteItemFromBooking
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: path
+        name: bookingItemId
+        required: true
+        schema:
+          type: integer
+          format: int64
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '../../../../../components/schemas/result.yaml#/Result'
+                - type: object
+                  properties:
+                    data:
+                      type: integer
+                      format: int64
+                      description: bookingItemId has beed deleted from booking

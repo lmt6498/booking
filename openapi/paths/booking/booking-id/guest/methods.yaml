@@ -1,0 +1,92 @@
+### root: '../../../..'
+### schemas: '../../../../components/schemas'
+### parameters: '../../../../components/parameters'
+
+paths-booking-{booking-id}-guest-endpoints:
+  get:
+    tags:
+      - booking-guest
+    summary: Filtering guest in a booking
+    description: Filtering a list of guest in an existing booking
+    operationId: filterBookingGuest
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - $ref: '../../../../components/parameters/pagination.yaml#/SizeParam'
+      - $ref: '../../../../components/parameters/pagination.yaml#/PageParam'
+      - $ref: '../../../../components/parameters/pagination.yaml#/OrdersParam'
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '../../../../components/schemas/result.yaml#/Result'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        allOf:
+                          - $ref: '../../../../components/schemas/booking.yaml#/BookingGuest'
+                          - type: object
+                            properties:
+                              bookingGuestId:
+                                type: integer
+                                format: int64
+                    metadata:
+                      type: object
+                      example:
+                        total: 100
+                        limit: 100
+                        offset: 0
+                      properties:
+                        total:
+                          type: integer
+                          format: int64
+                        limit:
+                          type: integer
+                          format: int64
+                        offset:
+                          type: integer
+                          format: int64
+  ###
+  post:
+    tags:
+      - booking-guest
+    summary: Add guests to an existing booking
+    description: Add a list of guests to an existing booking
+    operationId: addGuestToBooking
+    parameters:
+      - in: path
+        name: bookingId
+        required: true
+        schema:
+          type: integer
+          format: int64
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../../../components/schemas/booking.yaml#/BookingGuest'
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '../../../../components/schemas/result.yaml#/Result'
+                - type: object
+                  properties:
+                    data:
+                      type: integer
+                      format: int64
+                      description: Number of guests were added to the booking

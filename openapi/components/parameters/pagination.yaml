@@ -1,0 +1,36 @@
+### root: '../..'
+### schemas: '../../components/schemas'
+### parameters: '../../components/parameters'
+
+
+SizeParam:
+  name: size
+  in: query
+  required: false
+  schema:
+    type: integer
+    format: int32
+    minimum: 1
+    default: 20
+
+PageParam:
+  name: page
+  in: query
+  required: false
+  schema:
+    type: integer
+    format: int32
+    minimum: 0
+    default: 0
+
+OrdersParam:
+  name: orders
+  in: query
+  required: false
+  schema:
+    example:
+      - field1 ASC
+      - field2 DESC
+    type: array
+    items:
+      type: string

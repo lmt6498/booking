@@ -1,0 +1,12 @@
+GET {{host}}/bookings/26
+Origin: http://localhost:4200
+Referer: http://localhost:4200
+Content-Type: application/json
+Authorization: {{bearer}}
+
+###
+OPTIONS {{host}}/booking/1
+Origin: http://localhost:4200
+Referer: http://localhost:4200
+Content-Type: application/json
+

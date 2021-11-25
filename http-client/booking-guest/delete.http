@@ -1,0 +1,3 @@
+DELETE {{host}}/booking/1/guest/29
+Content-Type: application/json
+Authorization: {{bearer}}

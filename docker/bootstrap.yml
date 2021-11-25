@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: ms-booking
+  cloud:
+    config:
+      uri: http://ms-configuration:8888
+      fail-fast: true
